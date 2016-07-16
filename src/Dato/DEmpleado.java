@@ -4,7 +4,9 @@
  */
 package Dato;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.StyledEditorKit;
 
 /**
@@ -74,7 +76,7 @@ public class DEmpleado {
     
      public Boolean GuardarEmpleado(){
        Statement Consulta;
-       String dato ="INSERT INTO EMPLEADOS VALUES("+String.valueOf(ID) +","+String.valueOf(CI) +",'"+NOMBRE+"',"+String.valueOf(TELEFONO) +",'"+DIRECCION+"','ASDAD',NOW(),NOW());";
+       String dato ="INSERT INTO EMPLEADOS VALUES("+String.valueOf(ID) +","+String.valueOf(CI) +",'"+NOMBRE+"',"+String.valueOf(TELEFONO) +",'"+DIRECCION+"','"+DESCRIPCION+"',NOW(),NOW());";
        try {
            Consulta=(Statement) con.getConexion().createStatement();
            Consulta.execute(dato);
@@ -117,6 +119,36 @@ public class DEmpleado {
            return false;
        }
     }
+     
+     public DefaultTableModel getEmpleado(){
+         String[] columnNames = {"ID","CI","NOMBRE","TELEFONO","DIRECCION","DESCRIPCION"};
+        DefaultTableModel tabla = new DefaultTableModel(columnNames, 0); 
+        Statement Consulta;
+        ResultSet resultado=null;
+        String dato="select * from empleados;";
+
+        try {
+           Consulta=(Statement) con.getConexion().createStatement();
+           resultado=Consulta.executeQuery(dato);
+            int i =0;
+            while(resultado.next()){
+                tabla.setRowCount(tabla.getRowCount()+1);
+                tabla.setValueAt(resultado.getObject(1).toString(), i, 0);
+                tabla.setValueAt(resultado.getObject(2).toString(), i, 1);
+                tabla.setValueAt(resultado.getObject(2).toString(), i, 2);
+                tabla.setValueAt(resultado.getObject(2).toString(), i, 3);
+                tabla.setValueAt(resultado.getObject(2).toString(), i, 4);
+                tabla.setValueAt(resultado.getObject(2).toString(), i, 5);
+                i++;
+            }
+            Consulta.close();
+           
+       } catch (Exception e) {
+            System.out.println("no se pudo CARGAR LOS DATOS TABLA GENERO");
+       } 
+      
+      return tabla;
+     }
      
     
 }

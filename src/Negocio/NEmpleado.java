@@ -5,6 +5,9 @@
 package Negocio;
 
 import Dato.DEmpleado;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,5 +43,10 @@ public class NEmpleado {
     DatoEmpleado.setID(ID);
     return DatoEmpleado.EliminarEmpleado();   
     }
+    
+    public DefaultTableModel getEmpleados(){
+        return DatoEmpleado.getEmpleado();
+    }
+    
     
 }
