@@ -25,6 +25,15 @@ public class PEmpleado extends javax.swing.JPanel {
     public void CargarEmpleados(){
         jTable1.setModel(NegocioEmpleado.getEmpleados());
     }
+    
+    public void LimpiarCampos(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,6 +143,11 @@ public class PEmpleado extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton4.setText("NUEVO");
@@ -228,6 +242,8 @@ public class PEmpleado extends javax.swing.JPanel {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     NegocioEmpleado.GuardarEmpleado(Integer.valueOf(jTextField1.getText()),Integer.valueOf(jTextField2.getText()),jTextField3.getText(),Integer.valueOf(jTextField4.getText()),jTextField5.getText(),jTextField6.getText());
+    LimpiarCampos();
+    CargarEmpleados();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -242,10 +258,14 @@ public class PEmpleado extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         NegocioEmpleado.ModificarEmpleado(Integer.valueOf(jTextField1.getText()),Integer.valueOf(jTextField2.getText()),jTextField3.getText(),Integer.valueOf(jTextField4.getText()),jTextField5.getText(),jTextField6.getText());
+        LimpiarCampos();
+        CargarEmpleados();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         NegocioEmpleado.EliminarEmpleado(Integer.valueOf(jTextField1.getText()));
+        LimpiarCampos();
+        CargarEmpleados();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
@@ -289,14 +309,19 @@ public class PEmpleado extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField6KeyTyped
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        
+        LimpiarCampos();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        
+        jTextField1.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+        jTextField2.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+        jTextField3.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+        jTextField4.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+        jTextField5.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        jTextField6.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
+        
+    }//GEN-LAST:event_jTable1MousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

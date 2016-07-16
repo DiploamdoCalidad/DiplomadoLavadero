@@ -135,10 +135,10 @@ public class DEmpleado {
                 tabla.setRowCount(tabla.getRowCount()+1);
                 tabla.setValueAt(resultado.getObject(1).toString(), i, 0);
                 tabla.setValueAt(resultado.getObject(2).toString(), i, 1);
-                tabla.setValueAt(resultado.getObject(2).toString(), i, 2);
-                tabla.setValueAt(resultado.getObject(2).toString(), i, 3);
-                tabla.setValueAt(resultado.getObject(2).toString(), i, 4);
-                tabla.setValueAt(resultado.getObject(2).toString(), i, 5);
+                tabla.setValueAt(resultado.getObject(3).toString(), i, 2);
+                tabla.setValueAt(resultado.getObject(4).toString(), i, 3);
+                tabla.setValueAt(resultado.getObject(5).toString(), i, 4);
+                tabla.setValueAt(resultado.getObject(6).toString(), i, 5);
                 i++;
             }
             Consulta.close();
