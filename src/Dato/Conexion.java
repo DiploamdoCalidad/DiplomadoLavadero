@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Miguel
  */
 public class Conexion {
-    private static String Servidor="jdbc:mysql://localhost:3306/diplomado";
+    private static String Servidor="jdbc:mysql://192.168.0.14:3306/diplomado";
     private static String user="root";
     private static String pass="";
     private static String driver="com.mysql.jdbc.Driver";
