@@ -64,8 +64,6 @@ public class PEmpleado extends javax.swing.JPanel {
             }
         });
 
-        jTextField6.setText("jTextField6");
-
         jLabel2.setText("CI");
 
         jLabel1.setText("ID");
@@ -78,8 +76,18 @@ public class PEmpleado extends javax.swing.JPanel {
         });
 
         jButton2.setText("MODIFICAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,7 +155,7 @@ public class PEmpleado extends javax.swing.JPanel {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("GUARDAR", jPanel1);
@@ -160,7 +168,7 @@ public class PEmpleado extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab3", jPanel3);
@@ -173,7 +181,7 @@ public class PEmpleado extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("LISTA", jPanel2);
@@ -191,7 +199,7 @@ public class PEmpleado extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -199,7 +207,7 @@ public class PEmpleado extends javax.swing.JPanel {
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    NegocioEmpleado.GuardarEmpleado(Integer.valueOf(jTextField1.getText()),Integer.valueOf(jTextField2.getText()),jTextField3.getText(),Integer.valueOf(jTextField4.getText()),jTextField5.getText(),jTextField6.toString());
+    NegocioEmpleado.GuardarEmpleado(Integer.valueOf(jTextField1.getText()),Integer.valueOf(jTextField2.getText()),jTextField3.getText(),Integer.valueOf(jTextField4.getText()),jTextField5.getText(),jTextField6.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -211,6 +219,14 @@ public class PEmpleado extends javax.swing.JPanel {
               evt.consume(); 
           } 
     }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        NegocioEmpleado.ModificarEmpleado(Integer.valueOf(jTextField1.getText()),Integer.valueOf(jTextField2.getText()),jTextField3.getText(),Integer.valueOf(jTextField4.getText()),jTextField5.getText(),jTextField6.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        NegocioEmpleado.EliminarEmpleado(Integer.valueOf(jTextField1.getText()));
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -5,6 +5,7 @@
 package Dato;
 
 import java.sql.Statement;
+import javax.swing.text.StyledEditorKit;
 
 /**
  *
@@ -71,18 +72,51 @@ public class DEmpleado {
         this.DESCRIPCION = DESCRIPCION;
     }
     
-     public void GuardarEmpleado(){
+     public Boolean GuardarEmpleado(){
        Statement Consulta;
-       String dato ="INSERT INTO EMPLEADOS VALUES("+String.valueOf(ID) +","+String.valueOf(CI) +",'"+NOMBRE+"',"+String.valueOf(TELEFONO) +",'"+DIRECCION+"','ASDAD',CURDATE(),CURDATE());";
+       String dato ="INSERT INTO EMPLEADOS VALUES("+String.valueOf(ID) +","+String.valueOf(CI) +",'"+NOMBRE+"',"+String.valueOf(TELEFONO) +",'"+DIRECCION+"','ASDAD',NOW(),NOW());";
        try {
            Consulta=(Statement) con.getConexion().createStatement();
            Consulta.execute(dato);
            Consulta.close();
            System.out.println("los datos se GUARDARON con exito...");
+           return true;
        } catch (Exception e) {
            System.out.println("no se puede GUARDAT TABLA EMPLEADOO");
-
+           return false;
        }
     }
+     
+     public Boolean ModificarEmpleado(){
+       Statement Consulta;
+       String dato ="update empleados set ci="+String.valueOf(CI) +",nombre='"+NOMBRE+"',telefono="+String.valueOf(TELEFONO) +",direccion='"+DIRECCION+"', descripcion='"+DESCRIPCION+"',updated_at=now() where id="+String.valueOf(ID) +";";
+       try {
+           Consulta=(Statement) con.getConexion().createStatement();
+           Consulta.execute(dato);
+           Consulta.close();
+           System.out.println("los datos se MODIFICARON con exito...");
+           return true;
+       } catch (Exception e) {
+           System.out.println("no se puede MODIFICARON TABLA EMPLEADOO");
+           return false;
+       }
+    }
+     
+     public boolean EliminarEmpleado(){
+       Statement Consulta;
+       String dato ="DELETE FROM EMPLEADOS where id="+String.valueOf(ID) +";";
+       try {
+          Consulta=(Statement) con.getConexion().createStatement();
+          Consulta.execute(dato);
+           Consulta.close();
+           System.out.println("los datos se ELIMINARON con exito...");
+           return true;
+       } catch (Exception e) {
+       System.out.println("no se puede REGISTRAR la conexion");
+           System.out.println("no se pudo eliminar en la tabla Empleado");
+           return false;
+       }
+    }
+     
     
 }

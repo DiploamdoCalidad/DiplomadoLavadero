@@ -16,14 +16,29 @@ public class NEmpleado {
     public NEmpleado() {
     DatoEmpleado= new DEmpleado();
     }
-    public void GuardarEmpleado(int ID,int CI,String NOMBRE,int TELEFONO,String DIRECCION,String DESCRIPCION){
+    public boolean GuardarEmpleado(int ID,int CI,String NOMBRE,int TELEFONO,String DIRECCION,String DESCRIPCION){
        DatoEmpleado.setCI(CI);
        DatoEmpleado.setDESCRIPCION(DESCRIPCION);
        DatoEmpleado.setDIRECCION(DIRECCION);
        DatoEmpleado.setID(ID);
        DatoEmpleado.setNOMBRE(NOMBRE);
        DatoEmpleado.setTELEFONO(TELEFONO);
-        DatoEmpleado.GuardarEmpleado();
+       return DatoEmpleado.GuardarEmpleado();
+    }
+    
+    public boolean ModificarEmpleado(int ID,int CI,String NOMBRE,int TELEFONO,String DIRECCION,String DESCRIPCION){
+       DatoEmpleado.setCI(CI);
+       DatoEmpleado.setDESCRIPCION(DESCRIPCION);
+       DatoEmpleado.setDIRECCION(DIRECCION);
+       DatoEmpleado.setID(ID);
+       DatoEmpleado.setNOMBRE(NOMBRE);
+       DatoEmpleado.setTELEFONO(TELEFONO);
+       return DatoEmpleado.ModificarEmpleado();
+    }
+    
+    public boolean  EliminarEmpleado(int ID){
+    DatoEmpleado.setID(ID);
+    return DatoEmpleado.EliminarEmpleado();   
     }
     
 }
